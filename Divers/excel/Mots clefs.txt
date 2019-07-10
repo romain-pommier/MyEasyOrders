@@ -1,0 +1,2 @@
+Lettres droites = Roboto
+Manuscrites = Pinyon Script
