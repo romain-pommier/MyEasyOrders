@@ -79,15 +79,15 @@ $(document).ready(function() {
         emotionalOrderData['id_product'] = $(this).find("input[name=inputCheckProduct]").data("id_product");
         emotionalOrderData['order_comment'] = $('#productCommentClientEmotional').val();
         //traitement  custom 
-        dataFirstLine = '{"Police":"' + emotionalOrderData['fontText'] + '","Texte":"' + emotionalOrderData['textProduct'] + '"}';
-        dataSecondLine = ',{"Police":"' + emotionalOrderData['fontText2'] + '","Texte":"' + emotionalOrderData['textProduct2'] + '"}';
-        dataThirdLine = ',{"Police":"' + emotionalOrderData['fontText3'] + '","Texte":"' + emotionalOrderData['textProduct3'] + '"}';
+        dataFirstLine = '{"Police":"' + emotionalOrderData['fontFilter1'] + '","Texte":"' + emotionalOrderData['textProduct1'] + '"}';
+        dataSecondLine = ',{"Police":"' + emotionalOrderData['fontFilter2'] + '","Texte":"' + emotionalOrderData['textProduct2'] + '"}';
+        dataThirdLine = ',{"Police":"' + emotionalOrderData['fontFilter3'] + '","Texte":"' + emotionalOrderData['textProduct3'] + '"}';
 
         if (emotionalOrderData['textProduct3']) {
             emotionalOrderData['product_custom'] = '{"customization":[{"Face":"recto","Textes":[' + dataFirstLine + dataSecondLine + dataThirdLine + ']}]}';
         } else if (emotionalOrderData['textProduct2']) {
             emotionalOrderData['product_custom'] = '{"customization":[{"Face":"recto","Textes":[' + dataFirstLine + dataSecondLine + ']}]}';
-        } else if (emotionalOrderData['textProduct']) {
+        } else if (emotionalOrderData['textProduct1']) {
             emotionalOrderData['product_custom'] = '{"customization":[{"Face":"recto","Textes":[' + dataFirstLine + ']}]}';
         } else {
             emotionalOrderData['product_custom'] = "";
@@ -100,7 +100,7 @@ $(document).ready(function() {
             alert(data);
 
         });
-        
+
         return false
     })
 
@@ -125,7 +125,7 @@ function displayListFilter() {
         })
 
 }
-$('#refreshEmotionalOrder').click(function(){
+$('#refreshEmotionalOrder').click(function() {
     $('#emotionalOrderPage').trigger("click");
 })
 displayListFilter();

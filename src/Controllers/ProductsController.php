@@ -26,14 +26,18 @@
                 echo "Produit supprimer";
                 die();
             }
-            if(isset($request[''])){
+            else if(isset($request['addProductWhyNote'])){
                 if(count(getWhyNoteProduct($request['addProductWhyNote']))==0){
-                    //registerProduct($request[''], $partner);
+                    registerProduct($request['addProductWhyNote'], $partner);
                     echo "Produit ajouté";
                 }
                 else{
                     echo"Ce produit existe deja"; 
                 }
+            }
+            else if (isset($request['updateProductWhyNote'])){
+                updateWhyNoteProduct($request['updateProductWhyNote']);
+                echo"Produit modifier";
             }
         }
         public function readEmotional($request, $partner)
