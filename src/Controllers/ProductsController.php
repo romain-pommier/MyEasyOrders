@@ -52,17 +52,18 @@
             }
         }
         
-        
-        
         public function getDiferentFilterProduct($partner){
             if($partner == 'whynote'){
                 $filter=["product_name","product_color"];
+                $products=[$this->model->getDiferentOptionProduct($filter[0],'whynote'),$this->model->getDiferentOptionProduct($filter[1],'whynote')];
+                return $products;
             }
             else{
                 $filter=["product_sku","product_size"];
+                $products=[$this->model->getDiferentOptionProduct($filter[0],'emotional'),$this->model->getDiferentOptionProduct($filter[1],'emotional')];
+                return $products;
             }
-            $products=[$this->model->getDiferentOptionProduct($filter[0],'whynote'),$this->model->getDiferentOptionProduct($filter[1],'whynote')];
-            return $products;
+            
         }
     }
 

@@ -31,7 +31,8 @@
                     ]);
                 }
             ];
-             /*#################################################################
+             
+            /*#################################################################
             ###################################################################
             ###############################  WHYNOTE  #########################
             ###################################################################
@@ -81,12 +82,13 @@
                     die();
                 }
             ];
-
+            
             //*************************  ORDERS  *****************************/
+            
             Router::$requests[] = [
                 'names' => ['filterWhyNote'],
                 'action' => function($request){
-                    Router::$order->getProductWhynoteFilter($request);
+                    Router::$order->getProductFilter($request['filterWhyNote'],'whynote');
                     die();
                 }
             ];
@@ -118,9 +120,31 @@
 
             /*#################################################################
             ###################################################################
+            ################################  FONT  ###########################
+            ###################################################################
+            ###################################################################*/
+            Router::$requests[] = [
+                'names' => ['fontEmotional'],
+                'action' => function($request){
+                    Router::$font->addEmotionalFont($request);
+                }
+            ];
+            
+            Router::$requests[] = [
+                'names' => ['datalistOrderEmotional'],
+                'action' => function($request){
+                    echo json_encode(Router::$font->model->getEmotionalFont());
+                    die();
+                }
+            ];
+            
+
+            /*#################################################################
+            ###################################################################
             #############################  EMOTIONAL  #########################
             ###################################################################
             ###################################################################*/
+            
             Router::$requests[] = [
                 'names' => ['contentTableEmotional'],
                 'action' => function($request){
@@ -134,7 +158,14 @@
                 'action' => function($request){
                     Router::$product->checkAndRegisterEmotionalProduct($request['addProductEmotional']);
                 }
-
+            ];
+            Router::$requests[] = [
+                'names' => ['dataEmotionalClient'],
+                'action' => function($request){
+                    Router::$order->model->addOrderEmotional($request['dataEmotionalClient']);
+                    echo "Commande ajouté";
+                    die();
+                }
             ];
 
             Router::$requests[] = [
@@ -152,11 +183,37 @@
             ];
 
             Router::$requests[] = [
-                'names' => ['fontEmotional'],
+                'names' => ['displayListFilterEmotional'],
                 'action' => function($request){
-                    Router::$font->addEmotionalFont($request);
+                    echo json_encode(Router::$product->getDiferentFilterProduct('emotional'));
+                    die();
                 }
             ];
+            
+            Router::$requests[] = [
+                'names' => ['filterEmotional'],
+                'action' => function($request){
+                    Router::$order->getProductFilter($request['filterEmotional'],'emotional');
+                    die();
+                }
+            ];
+            
+            Router::$requests[] = [
+                'names' => ['contentTableHistoricEmotional'],
+                'action' => function($request){
+                    echo json_encode(Router::$order->model->getAllOrders('emotional'));
+                    die();
+                }
+            ];
+
+            Router::$requests[] = [
+                'names' => ['deleteOrderEmotional'],
+                'action' => function($request){
+                    Router::$order->deleteOrder($request['deleteOrderEmotional']);
+                    die();
+                }
+            ];
+            
         }
         
 

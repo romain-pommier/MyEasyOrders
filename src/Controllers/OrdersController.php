@@ -16,22 +16,25 @@
             die();
         }
         
-        public function getProductWhynoteFilter($dataFilter){
-            
-            if (count($dataFilter['filterWhyNote'])==1 && $dataFilter['filterWhyNote'] !== 0){
-                if(array_key_exists('product_name',$dataFilter['filterWhyNote'])){
-                    echo json_encode( $this->model->getProductsOneFilter('product_name',$dataFilter['filterWhyNote']['product_name']));
-                    die();
+        public function getProductFilter($dataFilter,$partner){
+            if($partner=='whynote'){
+                $filter=['product_name','product_color'];
+            }
+            else{
+                $filter=['product_sku','product_size'];
+            }
+            if (count($dataFilter)==1 && $dataFilter !== 0){
+                if(array_key_exists($filter[0],$dataFilter)){
+                    echo json_encode($this->model->getProductsOneFilter($filter[0],$dataFilter[$filter[0]],$partner));
                 }
                 else{
-                    echo json_encode( $this->model->getProductsOneFilter('product_color',$dataFilter['filterWhyNote']['product_color']));
-                    die();
+                    echo json_encode($this->model->getProductsOneFilter($filter[1],$dataFilter[$filter[1]],$partner));
                 }
             }
             else{
-                $filter=['product_name','product_color'];
-                $value=[$dataFilter['filterWhyNote']['product_name'],$dataFilter['filterWhyNote']['product_color']];
-                echo json_encode( $this->model->getProductsTwoFilter($filter,$value));
+                $filter=[$filter[0],$filter[1]];
+                $value=[$_POST[$filter[0]],$dataFilter[$filter[1]]];
+                echo json_encode($this->model->getProductsTwoFilter($filter,$value,$partner));
                 die();
             }
         }

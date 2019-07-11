@@ -60,7 +60,7 @@ $(document).ready(function() {
 
     $("#yesForEngravingProduct").click(function() {
             $(".engraving").empty();
-            $(".engraving").append("<div class='form-group col-md-4'><label for='productNumberLigneEmotional'>Nombre de ligne :</label><input type='number' list='dataNumberLigneEmotional' class='form-control' name='product_number_line_engraving' id='productNumberLigneEmotional'  ><datalist id='dataNumberLigneEmotional'></datalist></div><div class='form-group col-md-5'><label for='productNumberOfCharactersEmotional'>Nombre de caractères :</label><input type='number' list='dataNumberLigneEmotional' class='form-control' name='product_number_characters' id='productNumberOfCharactersEmotional' ><datalist id='dataNumberLigneEmotional'></datalist></div>")
+            $(".engraving").append("<div class='form-group col-md-4'><label for='productNumberLigneEmotional'>Nombre de ligne :</label><input type='number'  class='form-control' name='product_number_line_engraving' id='productNumberLigneEmotional' required  ></div><div class='form-group col-md-5'><label for='productNumberOfCharactersEmotional'>Nombre de caractères :</label><input type='number' list='dataNumberLigneEmotional' class='form-control' name='product_number_characters' id='productNumberOfCharactersEmotional' required ></div>")
             emotionalProductData['product_engraving'] = "1";
 
         }) ///
@@ -222,9 +222,11 @@ $(document).ready(function() {
             $.post("index.php", { "fontEmotional": fontEmotional },
                 function(data) {
                     alert(data);
+                    $('.close').trigger('click');
                 },
             );
         };
+
     });
     /*/*
     DISPLAY SIZE INPUT

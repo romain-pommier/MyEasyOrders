@@ -20,6 +20,7 @@ $(document).ready(function() {
         $.post("index.php", { "filterEmotional": filterEmotional },
             function(data) {
                 dataEmotionalProduct = JSON.parse(data);
+                console.log(dataEmotionalProduct);
                 if (dataEmotionalProduct.length !== 0) {
 
                     $("#choicesProduct").empty();

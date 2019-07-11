@@ -4,10 +4,9 @@
     class Product extends Model {
 
         function getAllProduct($partner){
-            $products= $this->fetchAll(['query' => 'SELECT * FROM products where partner_name = "'.$partner.'";']);
+            $products = $this->fetchAll(['query' => 'SELECT * FROM products where partner_name = "'.$partner.'";']);
             return $products;
         }
-
 
         function deleteProduct($id_product, $partner){
             $this->executeQuery(['query' => 'UPDATE products set product_visility = false where partner_name="'.$partner.'" and id_product = '.$id_product.';']);
@@ -47,23 +46,18 @@
             
             return true;
         }
+        
         function getDiferentOptionProduct($filter,$partner){
             $orders = $this->fetchAll([
                 'query' => "SELECT DISTINCT $filter FROM products where product_visility = true and partner_name = '$partner';"]);
                 return $orders;
         }
 
-        
-
-
         /*#################################################################
         ###################################################################
         #############################  EMOTIONAL  #########################
         ###################################################################
         ###################################################################*/
-
-
-
 
         function registerEmotionalProduct($dataProduct){
             $this->executeQuery([

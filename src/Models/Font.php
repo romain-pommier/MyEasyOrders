@@ -10,6 +10,11 @@
             ]);
             return true;
         }
+        
+        function getEmotionalFont(){
+            $font = $this->fetchAll(['query' => "SELECT * FROM emotional_font ;"]);
+            return  $font;
+        }
 
 
     }
