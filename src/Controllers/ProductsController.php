@@ -9,44 +9,49 @@
             $this->model = new Product();
         }
 
-        public function read($request)
-        {
-            $this->readWhyNote($request, "whynote");
-            $this->readEmotional($request, "emotional");
+        public function checkAndRegisterWhynoteProduct($dataProduct){
+            if(count($this->model->getWhyNoteProducts($dataProduct)) == 0){
+                $this->model->registerWhynoteProduct($dataProduct);
+                echo "Produit ajouté";
+                die();
+                
+            }
+            else{
+                echo 'Ce produits exist deja';
+                die();
+            }
+        }
+        public function deleteProduct($id_product, $partner){
+            $this->model->deleteProduct($id_product, $partner);
+            echo "Produit supprimé";
+            die();
+
+        }
+        public function updateWhyNoteProduct($dataProduct){
+            $this->model->updateWhyNoteProduct($dataProduct);
+            echo "Produit modifier";
+            die();
+        }
+        public function updateEmotionalProduct($dataProduct){
+            $this->model->updateEmotionalProduct($dataProduct);
+            echo "Produit modifier";
+            die();
+        }
+        
+        public function checkAndRegisterEmotionalProduct($dataProduct){
+            if(count($this->model->getEmotionalProducts($dataProduct)) == 0){
+                $this->model->registerEmotionalProduct($dataProduct);
+                echo "Produit ajouté";
+                die();
+                
+            }
+            else{
+                echo 'Ce produits exist deja';
+                die();
+            }
+
         }
 
-        public function readWhyNote($request, $partner)
-        {
-            if (isset($request['contentTableWhyNote'])) {
-                echo json_encode($this->model->getAllProduct($partner));
-                die();
-            }
-            else if (isset($request['deleteWhyNoteProduct'])){
-                $this->model->deleteProduct($request['deleteWhyNoteProduct'], $partner);
-                echo "Produit supprimer";
-                die();
-            }
-            else if(isset($request['addProductWhyNote'])){
-                if(count(getWhyNoteProduct($request['addProductWhyNote']))==0){
-                    registerProduct($request['addProductWhyNote'], $partner);
-                    echo "Produit ajouté";
-                }
-                else{
-                    echo"Ce produit existe deja"; 
-                }
-            }
-            else if (isset($request['updateProductWhyNote'])){
-                updateWhyNoteProduct($request['updateProductWhyNote']);
-                echo"Produit modifier";
-            }
-        }
-        public function readEmotional($request, $partner)
-        {
-            if (isset($request['contentTableEmotional'])){
-                echo json_encode($this->model->getAllProduct($partner));
-                die();
-            }
-        }
         
     }
 

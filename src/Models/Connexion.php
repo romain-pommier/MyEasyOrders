@@ -272,7 +272,7 @@
         ]);
     }
     
-    function getDataExistInEmotionalProduct($dataProduct){
+    function getEmotionalProduct($dataProduct){
         $sql="SELECT * FROM products where product_name='".$dataProduct['product_name']."'and product_reference='".$dataProduct['product_reference']."'and product_ean='".$dataProduct['product_ean']."' and product_sku='".$dataProduct['product_sku']."'and product_size='".$dataProduct['product_size']."'and product_engraving='".$dataProduct['product_engraving']."' ;"; 
         return excecuteSqlAndStockInArraY($sql);
     }

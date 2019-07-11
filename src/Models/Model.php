@@ -15,8 +15,6 @@
             $this->ovh = new DatabaseLogs(3306, "keethfuorders", "keethfuorders", "Orders31", "keethfuorders.mysql.db");
             $this->local = new DatabaseLogs(3308, "firstsellerorderdata",  "root", "Beltxa-p31php!*", "localhost");
         
-            //-----
-
             $this->logins = $this->local;
         }
 

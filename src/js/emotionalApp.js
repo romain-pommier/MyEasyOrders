@@ -47,7 +47,7 @@ $(document).ready(function() {
             emotionalProductData['id_product'] = emotionalProductOldData['id_product'];
 
             $.post("index.php", {
-                'updateProductEmotional': emotionalProductData
+                'updateEmotionalProduct': emotionalProductData
             }, function(data) {
                 alert(data);
             });
@@ -172,7 +172,7 @@ $(document).ready(function() {
                 $(".deleteBoutonForEmotionalProduct").click(function() {
                     productId = $(this).data('id_product');
 
-                    $.post("index.php", { 'focusDeleteEmotionalProduct': productId }, function(data) {
+                    $.post("index.php", { 'deleteEmotionalProduct': productId }, function(data) {
                         alert(data);
                         $('#emotionalProductPage').trigger('click');
                     });

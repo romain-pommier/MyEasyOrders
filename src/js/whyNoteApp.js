@@ -46,7 +46,7 @@ $(document).ready(function() {
             else {
                 whyNoteProductData['id_product'] = whyNoteProductOldData['id_product'];
                 $.post("index.php", {
-                        'updateProductWhyNote': whyNoteProductData
+                        'updateWhyNoteProduct': whyNoteProductData
                     },
                     function(data) {
                         alert(data);

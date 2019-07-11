@@ -4,8 +4,8 @@
 	session_start();
 	extract($_POST);
 
-	$router = new Router();
-	$router->read($_POST);
+	Router::registerRequests();
+	Router::readRequest($_POST);
 
 	return;
 

@@ -8,16 +8,7 @@
         {
             $this->model = new User();
         }
-
-        public function read($request)
-        {
-            if(isset($request['login']) && isset($request['pass'])){
-                $this->login([
-                    'username' => $request['login'],
-                    'password' => $request['pass']
-                ]);
-            }
-        }
+        
 
         public function login($logins)
         {
