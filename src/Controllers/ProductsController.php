@@ -4,8 +4,7 @@
 
     class ProductsController extends Controller
     {
-        public function __construct()
-        {
+        public function __construct(){
             $this->model = new Product();
         }
 
@@ -51,7 +50,19 @@
                 echo 'Ce produits exist deja';
                 die();
             }
-
+        }
+        
+        
+        
+        public function getDiferentFilterProduct($partner){
+            if($partner == 'whynote'){
+                $filter=["product_name","product_color"];
+            }
+            else{
+                $filter=["product_sku","product_size"];
+            }
+            $products=[$this->model->getDiferentOptionProduct($filter[0],'whynote'),$this->model->getDiferentOptionProduct($filter[1],'whynote')];
+            return $products;
         }
     }
 

@@ -8,6 +8,7 @@
             return $products;
         }
 
+
         function deleteProduct($id_product, $partner){
             $this->executeQuery(['query' => 'UPDATE products set product_visility = false where partner_name="'.$partner.'" and id_product = '.$id_product.';']);
             return true;
@@ -45,6 +46,11 @@
             ]);
             
             return true;
+        }
+        function getDiferentOptionProduct($filter,$partner){
+            $orders = $this->fetchAll([
+                'query' => "SELECT DISTINCT $filter FROM products where product_visility = true and partner_name = '$partner';"]);
+                return $orders;
         }
 
         

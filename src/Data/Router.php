@@ -64,6 +64,23 @@
                     Router::$product->deleteProduct($request['deleteWhyNoteProduct'],'whynote');
                 }
             ];
+            
+            Router::$requests[] = [
+                'names' => ['optionWhyNote'],
+                'action' => function($request) {
+                    echo json_encode(Router::$product->model->getDiferentOptionProduct('product_option','whynote'));
+                    die();
+                }
+                
+            ];
+            
+            Router::$requests[] = [
+                'names' => ['displayListFilterWhyNote'],
+                'action' => function($request){
+                    echo json_encode(Router::$product->getDiferentFilterProduct('whynote'));
+                    die();
+                }
+            ];
 
             //*************************  ORDERS  *****************************/
             Router::$requests[] = [
@@ -73,6 +90,31 @@
                     die();
                 }
             ];
+            
+            Router::$requests[] = [
+                'names' => ['WhyNoteOrderData'],
+                'action' => function($request){
+                    Router::$order->addWhynoteOrder($request['WhyNoteOrderData']);
+                    die();
+                }
+            ];
+            
+            Router::$requests[] = [
+                'names' => ['contentTableHistoricWhyNote'],
+                'action' => function($request){
+                    echo json_encode(Router::$order->model->getAllOrders('whynote'));
+                    die();
+                }
+            ];
+            
+            Router::$requests[] = [
+                'names' => ['deleteOrder'],
+                'action' => function($request){
+                    Router::$order->deleteOrder($request['deleteOrder']);
+                    die();
+                }
+            ];
+            
 
             /*#################################################################
             ###################################################################
@@ -115,8 +157,6 @@
                     Router::$font->addEmotionalFont($request);
                 }
             ];
-
-
         }
         
 
@@ -140,11 +180,8 @@
 
                 $reqDatas['action']($request);
             }
-
-            require 'src/Views/loginform.php';
+        require 'src/Views/loginform.php';
         }
-        
-
     }
 
 ?>

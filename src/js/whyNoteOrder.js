@@ -56,7 +56,7 @@ $(document).ready(function() {
             alert(data);
 
         });
-        
+
         return false
     });
 })
@@ -90,7 +90,7 @@ function displayListFilter() {
             displayDataList(dataResult[1], $("#dropDownOrderProductColor"));
         })
 }
-$('#refreshWhynoteOrder').click(function(){
+$('#refreshWhynoteOrder').click(function() {
     $('#whyNoteOrderPage').trigger('click');
 
 })
