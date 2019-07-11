@@ -14,24 +14,26 @@
                 $this->model->registerWhynoteProduct($dataProduct);
                 echo "Produit ajouté";
                 die();
-                
             }
+            
             else{
                 echo 'Ce produits exist deja';
                 die();
             }
         }
+        
         public function deleteProduct($id_product, $partner){
             $this->model->deleteProduct($id_product, $partner);
             echo "Produit supprimé";
             die();
-
         }
+        
         public function updateWhyNoteProduct($dataProduct){
             $this->model->updateWhyNoteProduct($dataProduct);
             echo "Produit modifier";
             die();
         }
+        
         public function updateEmotionalProduct($dataProduct){
             $this->model->updateEmotionalProduct($dataProduct);
             echo "Produit modifier";
@@ -43,16 +45,14 @@
                 $this->model->registerEmotionalProduct($dataProduct);
                 echo "Produit ajouté";
                 die();
-                
             }
+            
             else{
                 echo 'Ce produits exist deja';
                 die();
             }
 
         }
-
-        
     }
 
 ?>

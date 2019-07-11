@@ -1,11 +1,15 @@
 <?php
     require_once 'src/Controllers/UsersController.php';
     require_once 'src/Controllers/ProductsController.php';
+    require_once 'src/Controllers/OrdersController.php';
+    require_once 'src/Controllers/FontsController.php';
     
     class Router {
         private static $requests = [];
         private static $user;
         private static $product;
+        private static $order;
+        private static $font;
 
         public static function registerRequests()
         {
@@ -15,6 +19,8 @@
 
             Router::$user = new UsersController();
             Router::$product = new ProductsController();
+            Router::$order = new OrdersController();
+            Router::$font = new FontsController();
 
             Router::$requests[] = [
                 'names' => ['login', 'pass'],
@@ -59,6 +65,15 @@
                 }
             ];
 
+            //*************************  ORDERS  *****************************/
+            Router::$requests[] = [
+                'names' => ['filterWhyNote'],
+                'action' => function($request){
+                    Router::$order->getProductWhynoteFilter($request);
+                    die();
+                }
+            ];
+
             /*#################################################################
             ###################################################################
             #############################  EMOTIONAL  #########################
@@ -91,6 +106,13 @@
                 'names' => ['deleteEmotionalProduct'],
                 'action' => function($request){
                     Router::$product->deleteProduct($request['deleteEmotionalProduct'],'emotional');
+                }
+            ];
+
+            Router::$requests[] = [
+                'names' => ['fontEmotional'],
+                'action' => function($request){
+                    Router::$font->addEmotionalFont($request);
                 }
             ];
 

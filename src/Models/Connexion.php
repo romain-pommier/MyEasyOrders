@@ -108,7 +108,7 @@
     */
 
     //enregistre les donner du formulaire formWhyNote dans la base de données
-    function addOrder($dataClient,$partner){
+    function addWhynoteOrder($dataClient,$partner){
         
         $dbh = connect();
         $sql='insert into orders values (null,null,null,:partner_name,:client_lastName,:client_firstname,null,:client_phone_number,:client_address,:client_address2,null,:client_postal_code,:client_city,:client_country,:shipping_name,null,:product_quantity,null,now(),:inputCheckProduct);';
@@ -223,9 +223,9 @@
     */
     function addEmotionalFont($data){
         $dbh=connect();
-        $sql="INSERT INTO emotional_font VALUES (null,'".$data."');";
+        $sql="INSERT INTO emotional_font VALUES (null,:font_name);";
         $statement = $dbh->prepare($sql);
-        $statement->execute();
+        $statement->execute([':font_name' => $data]);
     }
     function updateEmotionnalProduct($data){
         $dbh=connect();

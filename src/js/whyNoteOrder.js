@@ -15,6 +15,7 @@ $(document).ready(function() {
         } else if (colorFilter !== "") {
             filterWhyNote['product_color'] = colorFilter;
         }
+        console.log(filterWhyNote);
 
         $.post("index.php", { "filterWhyNote": filterWhyNote },
             function(data) {
