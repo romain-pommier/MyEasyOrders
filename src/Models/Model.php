@@ -6,16 +6,17 @@
         private $ionos = null;
         private $ovh = null;
         private $local = null;
-
+        private $localTest = null;
         private $logins = null;
 
         public function __construct()
         {
             $this->ionos = new DatabaseLogs(3306, "dbs102996", "dbu322716", "Beltxa-p31ion!*", "db5000108489.hosting-data.io");
             $this->ovh = new DatabaseLogs(3306, "keethfuorders", "keethfuorders", "Orders31", "keethfuorders.mysql.db");
-            $this->local = new DatabaseLogs(3308, "firstsellerorderdata",  "root", "Beltxa-p31php!*", "localhost");
+            $this->local = new DatabaseLogs(3306, "firstsellerorderdata",  "root", "Beltxa-p31php!*", "localhost");
+            $this->localTest = new DatabaseLogs(3306, "MyEasyOrders",  "root", "Beltxa-p31php!*", "localhost");
         
-            $this->logins = $this->local;
+            $this->logins = $this->localTest;
         }
 
         public function connectDatabase()

@@ -5,7 +5,7 @@
     ##############################################################################
     */
 
-    // Connection a la base de donnée
+    // // Connection a la base de donnée
     function connect(){
         // $port="3306";
         // $dbName="dbs102996";
@@ -20,13 +20,13 @@
         // $pass="Orders31";
         // $host="keethfuorders.mysql.db";
         
-        $port="3308";
-        $dbName="firstsellerorderdata";/*test*/
+        $port="3306";
+        $dbName="MyEasyOrders";/*test*/
         $user="root";
-        $pass="1234";
+        $pass="Beltxa-p31php!*";
         $host="localhost";
         try {
-            $dbh = new PDO("mysql:host=$host;port=" . $port . ";dbname=" . $dbName, $user, null);
+            $dbh = new PDO("mysql:host=$host;port=" . $port . ";dbname=" . $dbName, $user, $pass);
             $dbh->exec("SET NAMES 'UTF8'");
             
         } 
@@ -74,6 +74,7 @@
         $req = $dbh->prepare($sql);
         $req->execute([':name' => $loginName,':password'=>password_hash($loginPass,PASSWORD_DEFAULT)]);
     }
+    return;
     
     //Récupération du nombre d'utilisateur ayant le même nom
     function getAllUser($login){

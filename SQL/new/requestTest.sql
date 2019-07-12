@@ -1,0 +1,20 @@
+use MyEasyOrders;
+insert into Orders values(null,"id_order_followed",1,"partner","lastname","firstname","mail","phon","address","adress2","adress3","postal","city","country","shipping","comment",2,"custom",now(),1);
+insert into users values (null, "name","1234");
+insert into have values(1,2);
+insert into Products values (null,"partner","productname","color","option","ref","ean","sku","size",1,3,10,"picture",now(),0);
+select * from Products ;
+select * from have;
+INSERT INTO have VALUES(1,(SELECT id_order FROM Orders ORDER BY id_order DESC LIMIT 1));
+
+select id_order from Orders order by id_order desc LIMIT 1;
+
+delete from Orders where id_order=2;
+UPDATE products set 	product_visibility = false where partner_name="whynote" and id_product = 2;
+
+
+select *from Products , have, Orders where Products.id_product = have.id_product and Orders.order_visibility=1 and Orders.partner_name="whynote";	
+
+
+
+

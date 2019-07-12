@@ -20,6 +20,9 @@
                 echo 'mauvais utilisateur/mdp';
             }
         }
+        public function registerUsers(){
+            //////REMPLI
+        }
         public function disconnect(){
             session_destroy();
 		    accessLoginForm();

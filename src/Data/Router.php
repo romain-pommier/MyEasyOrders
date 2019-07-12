@@ -75,6 +75,7 @@
             Router::$requests[] = [
                 'names' => ['optionWhyNote'],
                 'action' => function($request) {
+                    
                     echo json_encode(Router::$product->model->getDiferentOptionProduct('product_option','whynote'));
                     die();
                 }

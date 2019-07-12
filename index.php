@@ -2,7 +2,7 @@
 	require_once 'src/Data/Router.php';
 
 	session_start();
-	extract($_POST);
+	
 
 	Router::registerRequests();
 	Router::readRequest($_POST);

@@ -4,12 +4,13 @@
     class Product extends Model {
 
         function getAllProduct($partner){
-            $products = $this->fetchAll(['query' => 'SELECT * FROM products where partner_name = "'.$partner.'";']);
+            $products = $this->fetchAll(['query' => 'SELECT * FROM products where partner_name = "'.$partner.'" and product_visibility = true;']);
             return $products;
         }
 
         function deleteProduct($id_product, $partner){
-            $this->executeQuery(['query' => 'UPDATE products set product_visility = false where partner_name="'.$partner.'" and id_product = '.$id_product.';']);
+            
+            $this->executeQuery(['query' => 'UPDATE products set 	product_visibility = false where partner_name="'.$partner.'" and id_product = '.$id_product.';']);
             return true;
         }
 
@@ -49,7 +50,7 @@
         
         function getDiferentOptionProduct($filter,$partner){
             $orders = $this->fetchAll([
-                'query' => "SELECT DISTINCT $filter FROM products where product_visility = true and partner_name = '$partner';"]);
+                'query' => "SELECT DISTINCT $filter FROM Products where product_visibility = true and partner_name = '$partner';"]);
                 return $orders;
         }
 

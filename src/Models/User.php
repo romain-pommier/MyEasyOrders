@@ -17,5 +17,9 @@
                 return password_verify($logins['password'], $user['password']);
             }
         }
+
+        public function registerUsers(){
+            ///////REMPLIR
+        }
     }
 ?>
