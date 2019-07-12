@@ -30,7 +30,7 @@
 
         function addOrderEmotional($dataClient){
             $this->executeQuery([
-                'query' => 'INSERT INTO orders VALUES (NULL,:id_order_followed,NULL,:partner_name,:client_lastname,:client_firstname,:client_mail,:client_phone_number,:client_address,:client_address2,NULL,:client_postal_code,:client_city,:client_country,:shipping_name,:order_comment,:product_quantity,:product_custom,NOW(),:inputCheckProduct);',
+                'query' => 'INSERT INTO orders VALUES (NULL,:id_order_followed,NULL,:partner_name,:client_lastname,:client_firstname,:client_mail,:client_phone_number,:client_address,:client_address2,NULL,:client_postal_code,:client_city,:client_country,:shipping_name,:order_comment,:product_quantity,:product_custom,'.date().',:inputCheckProduct);',
                 'definitions' => [':partner_name'=>'emotional',
                 ':id_order_followed'=>$dataClient['id_order_followed'],
                 ':client_lastname'=>$dataClient['client_lastname'],

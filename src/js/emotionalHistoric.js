@@ -33,7 +33,7 @@ $(document).ready(function() {
                 } else if (y == 11) {
                     td.append(dataArrayBody[i]["product_quantity"]);
                 } else if (y == 12) {
-                    td.append(dataArrayBody[i]["product_date_added"]);
+                    td.append(dataArrayBody[i]["order_date"]);
                 } else if (y == 13) {
                     $("<button>", { class: 'deleteBoutonForEmotionalProduct', type: 'button', "id": dataArrayBody[i]["idorder"] }).appendTo(td);
 
@@ -50,6 +50,7 @@ $(document).ready(function() {
     $.post("index.php", { "contentTableHistoricEmotional": "ok" },
         function(Json) {
             data = JSON.parse(Json);
+            console.log(data);
 
             appendTableEmotionalHistoric(data, $("#tbodyEmotionalOrder"));
             $('#emotionalOrderTable').DataTable({

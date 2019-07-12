@@ -31,6 +31,12 @@
                     ]);
                 }
             ];
+            Router::$requests[] = [
+                'names' => ['disconnect'],
+                'action' => function($request) {
+                    Router::$user->disconnect();
+                }
+            ];
              
             /*#################################################################
             ###################################################################
@@ -213,6 +219,27 @@
                     die();
                 }
             ];
+
+
+            Router::$requests[] = [
+                'names' => ['dateExcel'],
+                'action' => function($request){
+                    Router::$order->createExcel($dataOrder,$dateOrder);
+                    die();
+                }
+            ];
+
+
+            // else if (isset($_POST["dateExcel"]) ){
+            //     if(getAllOrdersByDate($_POST['partnerName'],$_POST["dateExcel"])){
+            //         headerExcel(createExcel($_POST['partnerName'],$_POST["dateExcel"]),$_POST["dateExcel"]);
+            //         echo "Tableau Excel Créé";
+            //     }
+            //     else{
+            //         echo "aucune commande n'a était enregistré le ".$_POST["dateExcel"];
+            //     }
+                
+            // }
             
         }
         
