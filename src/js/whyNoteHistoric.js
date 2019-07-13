@@ -27,7 +27,7 @@ $(document).ready(function() {
                 } else if (y == 9) {
                     td.append(dataArrayBody[i]["order_date"]);
                 } else if (y == 10) {
-                    $("<button>", { class: 'deleteBoutonForWhyNoteProduct', type: 'button', "id": dataArrayBody[i]["idorder"] }).appendTo(td);
+                    $("<button>", { class: 'deleteBoutonForWhyNoteProduct', type: 'button', "id": dataArrayBody[i]["id_order"] }).appendTo(td);
 
                 }
                 tr.append(td);

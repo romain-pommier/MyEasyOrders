@@ -35,7 +35,7 @@ $(document).ready(function() {
                 } else if (y == 12) {
                     td.append(dataArrayBody[i]["order_date"]);
                 } else if (y == 13) {
-                    $("<button>", { class: 'deleteBoutonForEmotionalProduct', type: 'button', "id": dataArrayBody[i]["idorder"] }).appendTo(td);
+                    $("<button>", { class: 'deleteBoutonForEmotionalProduct', type: 'button', "id": dataArrayBody[i]["id_order"] }).appendTo(td);
 
                 }
                 td.setAttribute("scope", "row");
@@ -62,9 +62,9 @@ $(document).ready(function() {
                 }
             });
             //$("thead").sticky({topSpacing:0});
-            
-  
-            
+
+
+
             $(".deleteBoutonForEmotionalProduct").click(function() {
                 orderId = $(this).attr('id');
                 $.post("index.php", { deleteOrderEmotional: orderId },

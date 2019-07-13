@@ -9,11 +9,17 @@ INSERT INTO have VALUES(1,(SELECT id_order FROM Orders ORDER BY id_order DESC LI
 
 select id_order from Orders order by id_order desc LIMIT 1;
 
+
+DELETE FROM have WHERE id_order=15;
+DELETE FROM Orders WHERE id_order=15;
+
 delete from Orders where id_order=2;
 UPDATE products set 	product_visibility = false where partner_name="whynote" and id_product = 2;
 
 
-select *from Products , have, Orders where Products.id_product = have.id_product and Orders.order_visibility=1 and Orders.partner_name="whynote";	
+select DISTINCT *from have, Orders where Orders.id_order = have.id_order and Orders.partner_name="whynote";	
+
+SELECT * FROM Products , have, Orders where Products.id_product = have.id_product  AND Orders.partner_name="'.$partner.'";
 
 
 

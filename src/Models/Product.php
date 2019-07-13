@@ -49,9 +49,15 @@
         }
         
         function getDiferentOptionProduct($filter,$partner){
-            $orders = $this->fetchAll([
+            $products = $this->fetchAll([
                 'query' => "SELECT DISTINCT $filter FROM Products where product_visibility = true and partner_name = '$partner';"]);
-                return $orders;
+                return $products;
+        }
+
+        function getProductsOneFilter($filter,$value,$partner){
+            $products = $this->fetchAll([
+                'query' => "SELECT* FROM Products WHERE $filter = '".$value."'  and partner_name = '".$partner."' and product_visibility = true;"]);
+                return $products;
         }
 
         /*#################################################################
@@ -62,7 +68,7 @@
 
         function registerEmotionalProduct($dataProduct){
             $this->executeQuery([
-                'query' => 'INSERT INTO products VALUES (NULL,"emotional",:product_name,NULL,NULL,:product_reference,:product_ean,:product_sku,:product_size,:product_engraving,:product_number_line_engraving,:product_number_characters,:product_picture_url,now(),1 );',
+                'query' => 'INSERT INTO Products VALUES (NULL,"emotional",:product_name,NULL,NULL,:product_reference,:product_ean,:product_sku,:product_size,:product_engraving,:product_number_line_engraving,:product_number_characters,:product_picture_url,now(),1 );',
                 'definitions' => [
                     ':product_name'=>$dataProduct['product_name'],
                     ':product_reference'=>$dataProduct['product_reference'],

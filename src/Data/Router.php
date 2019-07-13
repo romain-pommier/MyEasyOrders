@@ -95,7 +95,7 @@
             Router::$requests[] = [
                 'names' => ['filterWhyNote'],
                 'action' => function($request){
-                    Router::$order->getProductFilter($request['filterWhyNote'],'whynote');
+                    Router::$product->getProductFilter($request['filterWhyNote'],'whynote');
                     die();
                 }
             ];
