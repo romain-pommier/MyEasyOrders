@@ -5,6 +5,8 @@ insert into have values(1,2);
 insert into Products values (null,"partner","productname","color","option","ref","ean","sku","size",1,3,10,"picture",now(),0);
 select * from Products ;
 select * from have;
+select * from orders;
+
 INSERT INTO have VALUES(1,(SELECT id_order FROM Orders ORDER BY id_order DESC LIMIT 1));
 
 select id_order from Orders order by id_order desc LIMIT 1;
@@ -17,9 +19,11 @@ delete from Orders where id_order=2;
 UPDATE products set 	product_visibility = false where partner_name="whynote" and id_product = 2;
 
 
-select DISTINCT *from have, Orders where Orders.id_order = have.id_order and Orders.partner_name="whynote";	
+
+SELECT * FROM Products , have,Orders where Products.id_product = have.id_product  AND Products.partner_name="whynote";
 
 SELECT * FROM Products , have, Orders where Products.id_product = have.id_product  AND Orders.partner_name="'.$partner.'";
+
 
 
 

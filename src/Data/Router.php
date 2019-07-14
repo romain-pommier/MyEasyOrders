@@ -3,6 +3,7 @@
     require_once 'src/Controllers/ProductsController.php';
     require_once 'src/Controllers/OrdersController.php';
     require_once 'src/Controllers/FontsController.php';
+    require_once 'src/Helper/Helper.php';
     
     class Router {
         private static $requests = [];
@@ -10,6 +11,7 @@
         private static $product;
         private static $order;
         private static $font;
+        private static $helper;
 
         public static function registerRequests()
         {
@@ -21,6 +23,7 @@
             Router::$product = new ProductsController();
             Router::$order = new OrdersController();
             Router::$font = new FontsController();
+            Router::$helper = new Helper();
 
             Router::$requests[] = [
                 'names' => ['login', 'pass'],
@@ -200,7 +203,7 @@
             Router::$requests[] = [
                 'names' => ['filterEmotional'],
                 'action' => function($request){
-                    Router::$order->getProductFilter($request['filterEmotional'],'emotional');
+                    Router::$product->getProductFilter($request['filterEmotional'],'emotional');
                     die();
                 }
             ];
@@ -225,22 +228,15 @@
             Router::$requests[] = [
                 'names' => ['dateExcel'],
                 'action' => function($request){
-                    Router::$order->createExcel($dataOrder,$dateOrder);
+                    Router::$helper->createExcel(Router::$order->model->getAllOrders($request['partnerName']),$request['dateExcel']);
+                    echo'Excel créé';
                     die();
                 }
             ];
 
+            
 
-            // else if (isset($_POST["dateExcel"]) ){
-            //     if(getAllOrdersByDate($_POST['partnerName'],$_POST["dateExcel"])){
-            //         headerExcel(createExcel($_POST['partnerName'],$_POST["dateExcel"]),$_POST["dateExcel"]);
-            //         echo "Tableau Excel Créé";
-            //     }
-            //     else{
-            //         echo "aucune commande n'a était enregistré le ".$_POST["dateExcel"];
-            //     }
-                
-            // }
+
             
         }
         

@@ -46,6 +46,7 @@ $(document).ready(function() {
                         $.post("index.php", "datalistOrderEmotional",
                             function(data) {
                                 dataResult = JSON.parse(data);
+                                console.log(dataResult);
 
                                 for (i = 0; i < dataResult.length; i++) {
                                     for (y = 1; y <= numberLineProduct; y++) {

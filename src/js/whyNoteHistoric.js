@@ -40,6 +40,7 @@ $(document).ready(function() {
     $.post("index.php", { contentTableHistoricWhyNote: "ok" },
         function(Json) {
             data = JSON.parse(Json);
+            console.log(data);
             appendTableWhyNoteHistoric(data, $("#tbodyWhyNoteOrder"));
             $('#whyNoteOrderTable').DataTable({
                 "scrollY": 200,

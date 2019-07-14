@@ -11,7 +11,7 @@ $(document).ready(function() {
                     td.append(dataArrayBody[i]["id_order_followed"]);
                     tr.append(td);
                 } else if (y == 1) {
-                    td.append(dataArrayBody[i]["idorder"]);
+                    td.append(dataArrayBody[i]["id_order"]);
                 } else if (y == 2) {
                     td.append(dataArrayBody[i]["client_lastname"] + " / " + dataArrayBody[i]["client_firstname"]);
                 } else if (y == 3) {

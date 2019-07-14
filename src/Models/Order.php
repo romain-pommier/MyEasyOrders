@@ -4,7 +4,8 @@
     class Order extends Model {
 
         function getAllOrders($partner){
-            $orders=$this->fetchAll(['query' => 'SELECT * FROM Products , have where Products.id_product = have.id_product  AND Products.partner_name="'.$partner.'";	']);
+            $orders=$this->fetchAll(['query' =>  'SELECT * FROM Products ,orders, have where  Products.partner_name="'.$partner.'" and orders.id_order = have.id_order and Products.id_product = have.id_product;	']);
+           
             	
             return $orders;
         }
@@ -56,6 +57,10 @@
                 ':product_custom'=>$dataClient['product_custom'],
                 //':inputCheckProduct'=>intval($dataClient['id_product'], 0),
                 ]
+            ]);
+            $this->executeQuery([
+                'query' => 'INSERT INTO have VALUES(:id_product,(SELECT id_order FROM Orders ORDER BY id_order DESC LIMIT 1));',
+                'definitions' =>[':id_product' => $dataClient['id_product']]
             ]);
             return true;
 
