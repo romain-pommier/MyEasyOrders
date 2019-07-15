@@ -6,6 +6,7 @@ insert into Products values (null,"partner","productname","color","option","ref"
 select * from Products ;
 select * from have;
 select * from orders;
+insert into users values (null,"romain","$2y$10$lu7bxCDeB.VRvTC2pVYJveJhtwH3uBljeR2O0uwjeh5DuKcqWRNv.");
 
 INSERT INTO have VALUES(1,(SELECT id_order FROM Orders ORDER BY id_order DESC LIMIT 1));
 

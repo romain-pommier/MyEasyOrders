@@ -17,12 +17,12 @@ CREATE TABLE Products(
         product_ean                   Varchar (255) ,
         product_sku                   Varchar (255) ,
         product_size                  Varchar (255) ,
-        product_engraving             Bool ,
+        product_engraving             tinyint ,
         product_number_line_engraving Int ,
         product_number_characters     Int ,
         product_picture_url           Varchar (255) ,
         product_date_added            Date ,
-        product_visibility            Bool NOT NULL
+        product_visibility            tinyint NOT NULL
 	,CONSTRAINT Products_PK PRIMARY KEY (id_product)
 )ENGINE=InnoDB;
 
@@ -44,7 +44,7 @@ CREATE TABLE users(
 #------------------------------------------------------------
 
 CREATE TABLE Orders(
-        idorder             Int  Auto_increment  NOT NULL ,
+        id_order             Int  Auto_increment  NOT NULL ,
         id_order_followed   Varchar (255) ,
         order_line          Int ,
         partner_name        Varchar (255) NOT NULL ,
@@ -64,18 +64,18 @@ CREATE TABLE Orders(
         product_custom      Varchar (255) ,
         order_date          Date ,
         id_user             Int
-	,CONSTRAINT Orders_PK PRIMARY KEY (idorder)
+	,CONSTRAINT Orders_PK PRIMARY KEY (id_order)
 
 	,CONSTRAINT Orders_users_FK FOREIGN KEY (id_user) REFERENCES users(id_user)
 )ENGINE=InnoDB;
 
 CREATE TABLE have(
         id_product Int NOT NULL ,
-        idorder    Int NOT NULL
-	,CONSTRAINT have_PK PRIMARY KEY (id_product,idorder)
+        id_order    Int NOT NULL
+	,CONSTRAINT have_PK PRIMARY KEY (id_product,id_order)
 
 	,CONSTRAINT have_Products_FK FOREIGN KEY (id_product) REFERENCES Products(id_product)
-	,CONSTRAINT have_Orders0_FK FOREIGN KEY (idorder) REFERENCES Orders(idorder)
+	,CONSTRAINT have_Orders0_FK FOREIGN KEY (id_order) REFERENCES Orders(id_order)
 )ENGINE=InnoDB;
 
 
@@ -83,9 +83,10 @@ CREATE TABLE have(
 # Table: fonts
 #------------------------------------------------------------
 
-CREATE TABLE fonts(
-        id_font Int  Auto_increment  NOT NULL ,
-        name    Varchar (255)
+CREATE TABLE Fonts(
+        id_fonts Int  Auto_increment  NOT NULL ,
+        name    Varchar (255),
+        CONSTRAINT Fonts_PK PRIMARY KEY (id_fonts)
 )ENGINE=InnoDB;
 
 

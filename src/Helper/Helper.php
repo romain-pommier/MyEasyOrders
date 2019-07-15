@@ -8,14 +8,6 @@
 
 class Helper{
 
-    public function __construct(){
-        $this->model = new Order();
-    }
-
-   
-
-
-
     function sendMail($pathFile,$partnerName,$orderDate){
         $partnerName ="logistique@firstseller.fr";
         
