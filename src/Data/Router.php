@@ -106,7 +106,7 @@
             Router::$requests[] = [
                 'names' => ['WhyNoteOrderData'],
                 'action' => function($request){
-                    Router::$order->addWhynoteOrder($request['WhyNoteOrderData']);
+                    Router::$order->model->addWhynoteOrder($request['WhyNoteOrderData']);
                     die();
                 }
             ];
@@ -172,8 +172,7 @@
             Router::$requests[] = [
                 'names' => ['dataEmotionalClient'],
                 'action' => function($request){
-                    Router::$order->model->addOrderEmotional($request['dataEmotionalClient']);
-                    echo "Commande ajouté";
+                    Router::$order->addEmotionalOrder($request['dataEmotionalClient']);
                     die();
                 }
             ];

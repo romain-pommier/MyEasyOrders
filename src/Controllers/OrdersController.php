@@ -15,6 +15,11 @@
             echo'Commande Ajouté';
             die();
         }
+        public function addEmotionalOrder($dataClient){
+            $this->model->addEmotionalOrder($dataClient);
+            echo'Commande Ajouté';
+            die();
+        }
         
         
         

@@ -45,11 +45,13 @@
             }
             return $request;
         }
+        
         public function fetch($data)
         {
             $request = $this->executeQuery($data);
             return $request->fetch();
         }
+        
         public function fetchAll($data)
         {
             $request = $this->executeQuery($data);
