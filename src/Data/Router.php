@@ -13,6 +13,7 @@
         private static $font;
         private static $helper;
 
+
         public static function registerRequests()
         {
             if (Router::$requests != []) {
@@ -46,6 +47,7 @@
             ###############################  WHYNOTE  #########################
             ###################################################################
             ###################################################################*/
+           
             Router::$requests[] = [
                 'names' => ['contentTableWhyNote'],
                 'action' => function($request) {
@@ -225,7 +227,7 @@
 
 
             Router::$requests[] = [
-                'names' => ['dateExcel'],
+                'names' => ['dateExcel', "azda"],
                 'action' => function($request){
                     Router::$helper->createExcel(Router::$order->model->getAllOrders($request['partnerName']),$request['dateExcel']);
                     echo'Excel créé';
@@ -244,21 +246,20 @@
         {
             foreach (Router::$requests as $reqDatas)
             {
-                $badRequest = false;
+                $isRequest = true;
 
                 foreach ($reqDatas['names'] as $name)
                 {
                     if (!isset($request[$name])) {
-                        $badRequest = true;
+                        $isRequest = false;
                         break;
                     }
                 }
 
-                if ($badRequest) {
-                    continue;
+                if ($isRequest) {
+                    $reqDatas['action']($request);
+                    break;
                 }
-
-                $reqDatas['action']($request);
             }
         require 'src/Views/loginform.php';
         }
