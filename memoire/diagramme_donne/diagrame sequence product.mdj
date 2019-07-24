@@ -221,7 +221,7 @@
 											"left": 426,
 											"top": 80,
 											"width": 1,
-											"height": 439,
+											"height": 443,
 											"autoResize": false
 										}
 									],
@@ -237,7 +237,7 @@
 									"left": 384,
 									"top": 40,
 									"width": 83.57177734375,
-									"height": 479,
+									"height": 483,
 									"autoResize": false,
 									"stereotypeDisplay": "label",
 									"showVisibility": true,
@@ -423,7 +423,7 @@
 											"left": 620,
 											"top": 80,
 											"width": 1,
-											"height": 439,
+											"height": 443,
 											"autoResize": false
 										}
 									],
@@ -439,7 +439,7 @@
 									"left": 584,
 									"top": 40,
 									"width": 72.736328125,
-									"height": 479,
+									"height": 483,
 									"autoResize": false,
 									"stereotypeDisplay": "label",
 									"showVisibility": true,
@@ -1194,13 +1194,13 @@
 											"showShadow": true,
 											"containerChangeable": false,
 											"containerExtending": false,
-											"left": 559,
+											"left": 631,
 											"top": 216,
 											"width": 194.365234375,
 											"height": 13,
 											"autoResize": false,
-											"alpha": 3.141589153589793,
-											"distance": 4,
+											"alpha": 1.626293824348307,
+											"distance": 72.11102550927978,
 											"hostEdge": {
 												"$ref": "AAAAAAFsAD77tm8wEyo="
 											},
@@ -1874,13 +1874,13 @@
 											"showShadow": true,
 											"containerChangeable": false,
 											"containerExtending": false,
-											"left": 416,
-											"top": 367,
+											"left": 383,
+											"top": 375,
 											"width": 237.7451171875,
 											"height": 13,
 											"autoResize": false,
-											"alpha": -1.6052664307635258,
-											"distance": 116.06894502837527,
+											"alpha": -1.5437768757828139,
+											"distance": 148.05404418657398,
 											"hostEdge": {
 												"$ref": "AAAAAAFsAEJCXm+V/d0="
 											},
@@ -2044,19 +2044,19 @@
 											"showShadow": true,
 											"containerChangeable": false,
 											"containerExtending": false,
-											"left": 623,
+											"left": 647,
 											"top": 400,
 											"width": 188.58251953125,
 											"height": 13,
 											"autoResize": false,
-											"alpha": 1.1902890876138634,
-											"distance": 10.770329614269007,
+											"alpha": 0.3430238272985673,
+											"distance": 29.732137494637012,
 											"hostEdge": {
 												"$ref": "AAAAAAFsAEM/xm+09Ms="
 											},
 											"edgePosition": 1,
 											"underline": false,
-											"text": "9 : Envoi les information vérifier",
+											"text": "9 : Envoi les information vérifiée",
 											"horizontalAlignment": 2,
 											"verticalAlignment": 5,
 											"wordWrap": false
@@ -2554,13 +2554,13 @@
 											"showShadow": true,
 											"containerChangeable": false,
 											"containerExtending": false,
-											"left": 399,
-											"top": 492,
+											"left": 375,
+											"top": 496,
 											"width": 246.42236328125,
 											"height": 13,
 											"autoResize": false,
-											"alpha": 1.5707963267948966,
-											"distance": 10,
+											"alpha": 0.5104884924405795,
+											"distance": 28.653097563788805,
 											"hostEdge": {
 												"$ref": "AAAAAAFsAESyR2/9pr0="
 											},
@@ -2847,7 +2847,7 @@
 							"_parent": {
 								"$ref": "AAAAAAFsADvj+25V4E4="
 							},
-							"name": "Envoi les information vérifier",
+							"name": "Envoi les information vérifiée",
 							"source": {
 								"$ref": "AAAAAAFsADxTBm6LqhQ="
 							},
@@ -2965,6 +2965,7 @@
 					"visibility": "public",
 					"isStatic": false,
 					"isLeaf": false,
+					"type": "",
 					"isReadOnly": false,
 					"isOrdered": false,
 					"isUnique": false,
@@ -2982,6 +2983,7 @@
 					"visibility": "public",
 					"isStatic": false,
 					"isLeaf": false,
+					"type": "",
 					"isReadOnly": false,
 					"isOrdered": false,
 					"isUnique": false,
@@ -2999,6 +3001,7 @@
 					"visibility": "public",
 					"isStatic": false,
 					"isLeaf": false,
+					"type": "",
 					"isReadOnly": false,
 					"isOrdered": false,
 					"isUnique": false,

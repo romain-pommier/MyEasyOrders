@@ -71,8 +71,8 @@
                             </div>
                             <form  autocomplete="false" method="post">
                                 <h2>Inscription:</h2>
-                                <input type="text"  name="loginregister"  class="fadeIn second"  placeholder="username" required>
-                                <input type="password"  name="passregister" class="fadeIn third"   placeholder="password" required>
+                                <input type="text"  name="loginregister"  class="fadeIn second"  placeholder="Nom d'utilisateur" required>
+                                <input type="password"  name="passregister" class="fadeIn third"   placeholder="Mot de passe " required>
                                 <input type="password"  name="pass_confirmregister" class="fadeIn fourth"   placeholder="Confirmer mot de passe" required>
                                 <input type="submit" name="inscription" class="fadeIn five" class="btn login_btn">
                             </form>
