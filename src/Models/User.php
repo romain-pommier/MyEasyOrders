@@ -19,7 +19,11 @@
         }
 
         public function registerUsers(){
-            ///////REMPLIR
+           $this->executeQuery([
+               'query' => 'INSERT INTO users VALUES  (nuul ,:name,:password);',
+               'definition' => [':name' => $loginName, ':password' => password_hash($loginPass, PASSWORD_DEFAULT)]
+           ]);
         }
+
     }
 ?>

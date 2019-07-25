@@ -4,9 +4,11 @@
     class Order extends Model {
 
         function getAllOrders($partner){
-            $orders=$this->fetchAll(['query' =>  'SELECT * FROM Products ,orders, have where  Products.partner_name="'.$partner.'" and orders.id_order = have.id_order and Products.id_product = have.id_product;	']);
+            $orders=$this->fetchAll(['query' =>  'SELECT * FROM Products , Orders, Orders_products 
+            where  Products.partner_name="'.$partner.'" 
+            and orders.id_order = Orders_products.id_order 
+            and Products.id_product = Orders_products.id_product;	']);
            
-            	
             return $orders;
         }
 
@@ -30,7 +32,7 @@
             ]);
             
             $this->executeQuery([
-                'query' => 'INSERT INTO have VALUES(:id_product,(SELECT id_order FROM Orders ORDER BY id_order DESC LIMIT 1));',
+                'query' => 'INSERT INTO Orders_products VALUES(:id_product,(SELECT id_order FROM Orders ORDER BY id_order DESC LIMIT 1));',
                 'definitions' => [':id_product' => $dataClient['inputCheckProduct']]
             ]);
             return true;
@@ -39,7 +41,12 @@
         
         function addEmotionalOrder($dataClient){
             $this->executeQuery([
-                'query' => 'INSERT INTO Orders VALUES (NULL,:id_order_followed,NULL,:partner_name,:client_lastname,:client_firstname,:client_mail,:client_phone_number,:client_address,:client_address2,NULL,:client_postal_code,:client_city,:client_country,:shipping_name,:order_comment,:product_quantity,:product_custom,NOW(),(SELECT id_user FROM users WHERE name ="'.$_SESSION['name'].'" ));',
+                'query' => 'INSERT INTO Orders VALUES (
+                    NULL,:id_order_followed,NULL,:partner_name,:client_lastname,
+                    :client_firstname,:client_mail,:client_phone_number,:client_address,
+                    :client_address2,NULL,:client_postal_code,:client_city,:client_country,
+                    :shipping_name,:order_comment,:product_quantity,:product_custom,
+                    NOW(),(SELECT id_user FROM users WHERE name ="'.$_SESSION['name'].'" ));',
                 'definitions' => [
                     ':partner_name' => 'emotional',
                     ':id_order_followed' => $dataClient['id_order_followed'],
@@ -56,11 +63,13 @@
                     ':order_comment' => $dataClient['order_comment'],
                     ':product_quantity' => intval($dataClient['product_quantity'], 0),
                     ':product_custom' => $dataClient['product_custom'],
-                    //':inputCheckProduct'=>intval($dataClient['id_product'], 0),
                 ]
             ]);
             $this->executeQuery([
-                'query' => 'INSERT INTO have VALUES(:id_product,(SELECT id_order FROM Orders ORDER BY id_order DESC LIMIT 1));',
+                'query' => 'INSERT INTO have VALUES(
+                    :id_product,
+                    (SELECT id_order FROM Orders ORDER BY id_order DESC LIMIT 1)
+                    );',
                 'definitions' =>[':id_product' => $dataClient['id_product']]
             ]);
             return true;
