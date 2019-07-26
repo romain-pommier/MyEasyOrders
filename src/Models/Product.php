@@ -50,7 +50,9 @@
         
         function getDiferentOptionProduct($filter,$partner){
             $products = $this->fetchAll([
-                'query' => "SELECT DISTINCT $filter FROM Products where product_visibility = true and partner_name = '$partner';"]);
+                'query' => "SELECT DISTINCT :filter FROM Products where
+                    product_visibility = true and partner_name = :partner_name;",
+                'definitions' => [ ':filter' => $filter, ':partner_name' => $partner]]);
                 return $products;
         }
 

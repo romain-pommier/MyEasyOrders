@@ -24,6 +24,12 @@
                'definition' => [':name' => $loginName, ':password' => password_hash($loginPass, PASSWORD_DEFAULT)]
            ]);
         }
+        public function getAllUser($login){
+            $this->executeQuery([
+                'query' => 'SELECT * FROM users WHERE name=:name',
+                'definitions' => [':name' => $login]
+            ]);
+        }
 
     }
 ?>

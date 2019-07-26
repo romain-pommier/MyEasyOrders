@@ -5,9 +5,11 @@
 
         function getAllOrders($partner){
             $orders=$this->fetchAll(['query' =>  'SELECT * FROM Products , Orders, Orders_products 
-            where  Products.partner_name="'.$partner.'" 
+            where  Products.partner_name= :partner_name 
             and orders.id_order = Orders_products.id_order 
-            and Products.id_product = Orders_products.id_product;	']);
+            and Products.id_product = Orders_products.id_product;',
+            'definitions' => [':partner_name' => $partner]
+            ]);
            
             return $orders;
         }
