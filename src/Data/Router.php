@@ -35,12 +35,15 @@
                     ]);
                 }
             ];
+            
             Router::$requests[] = [
                 'names' => ['disconnect'],
                 'action' => function($request) {
                     Router::$user->disconnect();
                 }
             ];
+
+            
              
             /*#################################################################
             ###################################################################
@@ -234,6 +237,16 @@
                     die();
                 }
             ];
+
+            
+            Router::$request[] = [
+                'names' => ['send_mail'],
+                'action' => function($request){
+                    Router::$helper->sendMail($request['pathFile'],$request['partnerName'],$request['orderDate']);
+                    echo 'Commande envoyé';
+                    die();
+                }
+            ]
 
             
 
