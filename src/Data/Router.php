@@ -246,7 +246,7 @@
                     echo 'Commande envoyé';
                     die();
                 }
-            ]
+            ];
 
             
 
