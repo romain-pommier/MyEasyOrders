@@ -18,7 +18,7 @@
             }
         }
 
-        public function registerUsers(){
+        public function registerUsers($loginName, $loginPass){
            $this->executeQuery([
                'query' => 'INSERT INTO users VALUES  (nuul ,:name,:password);',
                'definition' => [':name' => $loginName, ':password' => password_hash($loginPass, PASSWORD_DEFAULT)]

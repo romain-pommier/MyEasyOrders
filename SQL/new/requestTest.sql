@@ -23,7 +23,13 @@ UPDATE products set 	product_visibility = false where partner_name="whynote" and
 
 SELECT * FROM Products , have,Orders where Products.id_product = have.id_product  AND Products.partner_name="whynote";
 
-SELECT * FROM Products , have, Orders where Products.id_product = have.id_product  AND Orders.partner_name="'.$partner.'";
+SELECT * FROM Products INNER JOIN have ON Products.id_product = have.id_product INNER JOIN Orders ON Products.partner_name = "whynote";
+
+
+
+
+SELECT Building_name FROM Buildings LEFT JOIN Employees ON Buildings.Building_name = Employees.Building WHERE Building NOT NULL;
+
 
 
 
