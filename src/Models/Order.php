@@ -14,6 +14,18 @@
             return $orders;
         }
 
+        function getAllOrdersByDate($partner,$date){
+            $orders = $this->fetchAll(['query' => 'SELECT * FROM  Orders , Products, Orders_products  
+            where  Products.partner_name= :partner_name 
+            and orders.id_order = Orders_products.id_order 
+            and Products.id_product = Orders_products.id_product;
+            and orders.order_date = :date'
+            ,
+            'definitions' => [':partner_name' => $partner,
+                              ':date' => $date  ]
+            ]);
+        }
+
         function addWhynoteOrder($dataClient){
             
             $this->executeQuery([

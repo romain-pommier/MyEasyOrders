@@ -230,9 +230,10 @@
 
 
             Router::$requests[] = [
-                'names' => ['dateExcel', "azda"],
+                'names' => ['dateExcel'],
                 'action' => function($request){
-                    Router::$helper->createExcel(Router::$order->model->getAllOrders($request['partnerName']),$request['dateExcel']);
+                    Router::$helper->createExcel(
+                        Router::$order->model->getAllOrdersByDate($request['partnerName'],$request['dateExcel']));
                     echo'Excel créé';
                     die();
                 }
